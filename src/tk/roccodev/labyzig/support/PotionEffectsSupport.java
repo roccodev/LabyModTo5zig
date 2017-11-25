@@ -1,21 +1,21 @@
-package tk.roccodev.labyzig.support.color;
+package tk.roccodev.labyzig.support;
+
+import org.json.simple.JSONObject;
 
 import tk.roccodev.labyzig.configs.ConfigType;
-import tk.roccodev.labyzig.support.Support;
-import tk.roccodev.labyzig.utils.ChatColor;
 
-public class PrefixColorSupport implements Support {
+public class PotionEffectsSupport implements Support {
 
 	@Override
 	public String getKey() {
 		// TODO Auto-generated method stub
-		return "color1";
+		return "potionEffects";
 	}
 
 	@Override
 	public Class getType() {
 		// TODO Auto-generated method stub
-		return String.class;
+		return Boolean.class;
 	}
 
 	
@@ -23,26 +23,34 @@ public class PrefixColorSupport implements Support {
 	
 	@Override
 	public Object zigEquivalent(Object labyMod) {
-		// TODO Auto-generated method stub
-		return ChatColor.getByChar(((String)labyMod).replace("§", "").charAt(0)).name();
+		if((boolean)labyMod) {
+			JSONObject obj = new JSONObject() {{
+				
+				put("type", "POTIONS");
+				
+			}};
+			return obj;
+		}
+		return null;
+		
 	}
 
 	@Override
 	public String zigKey() {
 		// TODO Auto-generated method stub
-		return "colorPrefix";
+		return ""; // Irrelevant
 	}
 
 	@Override
 	public Class zigType() {
 		// TODO Auto-generated method stub
-		return String.class;
+		return JSONObject.class; // Irrelevant
 	}
 
 	@Override
 	public ConfigType zigConfig() {
 		// TODO Auto-generated method stub
-		return ConfigType.CONFIG;
+		return ConfigType.MODULES_ITEM;
 	}
 
 	

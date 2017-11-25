@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 
 import tk.roccodev.labyzig.configs.LabyModConfig;
+import tk.roccodev.labyzig.support.PotionEffectsSupport;
 import tk.roccodev.labyzig.support.SpeedFOVSupport;
 import tk.roccodev.labyzig.support.color.PrefixColorSupport;
 
@@ -51,6 +52,7 @@ public class Main {
 		try {
 			LabyModConfig.applyItem(new PrefixColorSupport());
 			LabyModConfig.applyItem(new SpeedFOVSupport());
+			LabyModConfig.applyItem(new PotionEffectsSupport());
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

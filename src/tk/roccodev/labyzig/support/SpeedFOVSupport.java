@@ -1,5 +1,6 @@
 package tk.roccodev.labyzig.support;
 
+import tk.roccodev.labyzig.configs.ConfigType;
 import tk.roccodev.labyzig.support.Support;
 import tk.roccodev.labyzig.utils.ChatColor;
 
@@ -36,6 +37,12 @@ public class SpeedFOVSupport implements Support {
 	public Class zigType() {
 		// TODO Auto-generated method stub
 		return Boolean.class;
+	}
+
+	@Override
+	public ConfigType zigConfig() {
+		// TODO Auto-generated method stub
+		return ConfigType.CONFIG;
 	}
 
 	
