@@ -28,13 +28,13 @@ public class LabyModConfig {
 	}
 	
 	public static void applyItem(Support item) throws FileNotFoundException, IOException, ParseException {
+		System.out.println("Loading " + item.getClass());
 		String key = item.getKey();
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(new FileReader(config));
 		Object result = item.getType().cast(json.get(key));
 		
-		System.out.println(result);
-		System.out.println(item.zigEquivalent(result));
+		if(item.zigEquivalent(result) == null) return;
 		
 		
 		File zigFile = item.zigConfig() == ConfigType.CONFIG ? zigConfig : new File(Main.ZIG_DIR + "/modules.json");
@@ -72,7 +72,7 @@ public class LabyModConfig {
 							put("enabled", true);
 							put("items", new JSONArray());
 						}};
-						System.out.println(module.toJSONString());
+					
 						
 						if(item.zigConfig() == ConfigType.MODULES){
 							
@@ -100,7 +100,7 @@ public class LabyModConfig {
 			
 			zigJson.remove("modules");
 			zigJson.put("modules", modules);
-			System.out.println(zigJson.toJSONString());
+	
 			
 			
 			

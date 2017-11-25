@@ -1,11 +1,13 @@
 package tk.roccodev.labyzig;
 
+import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
 
 import tk.roccodev.labyzig.configs.LabyModConfig;
+import tk.roccodev.labyzig.gui.MainGui;
 import tk.roccodev.labyzig.support.CoordsSupport;
 import tk.roccodev.labyzig.support.DateSupport;
 import tk.roccodev.labyzig.support.FPSSupport;
@@ -53,21 +55,19 @@ public class Main {
 			System.out.println("No 5zig found!");
 			System.exit(0);
 		}
-		LabyModConfig.init();
-		try {
-			LabyModConfig.applyItem(new PrefixColorSupport());
-			LabyModConfig.applyItem(new SpeedFOVSupport());
-			LabyModConfig.applyItem(new FPSSupport());
-			LabyModConfig.applyItem(new PotionEffectsSupport());
-			LabyModConfig.applyItem(new PingSupport());
-			LabyModConfig.applyItem(new CoordsSupport());
-			LabyModConfig.applyItem(new DateSupport());
-			LabyModConfig.applyItem(new TimeSupport());
-		} catch (IOException | ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainGui window = new MainGui();
+					window.frmLabymodTozig.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
+
+	
 	}
 	
 }
